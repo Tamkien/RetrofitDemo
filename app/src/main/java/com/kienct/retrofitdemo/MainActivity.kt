@@ -45,16 +45,21 @@ class MainActivity : AppCompatActivity() {
 //                                    "Total Pages: ${dataResponse.totalPages}"
                         tvTest!!.text = stringBuilder
                     }
-                    else -> tvTest!!.text = response.code().toString()//maybe error, usually 400 bad request
+                    else -> tvTest!!.text =
+                        response.code().toString()//maybe error, usually 400 bad request
                 }
             }
 
-            override fun onFailure(call: Call<DataResponse>, t: Throwable) {//if there is any exceptions
+            override fun onFailure(
+                call: Call<DataResponse>,
+                t: Throwable
+            ) {//if there is any exceptions
                 tvTest!!.text = t.message
             }
         })
     }
-//for calling
+
+    //for calling
     companion object {
         var BaseUrl = "https://reqres.in/" //api source
         var user = User("KienCT", "Student")
